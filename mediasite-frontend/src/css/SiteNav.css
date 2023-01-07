@@ -1,0 +1,11 @@
+.navbar{
+    background-color: rgb(13, 24, 13);
+    min-height: 70px;
+    width: 100vw;
+    color: rgb(209, 209, 209);
+}
+
+.navbar Nav {
+    display: flex;
+    float: right;
+}

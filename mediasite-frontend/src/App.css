@@ -1,0 +1,26 @@
+.App {
+  text-align: center;
+  height: 100vh;
+  background-color: rgb(69, 69, 69);
+  color: rgb(209, 209, 209);
+}
+
+.appNav {
+  margin-bottom: 5px;
+}
+
+.appContent {
+  display: flex;
+  justify-content: center;
+}
+
+.appSidebar {
+  background-color: rgb(13, 24, 13);
+  height: 90vh;
+  width: 10vw;
+  position: fixed;
+  right: 5px;
+  border-radius: 5px;
+}
+
+
