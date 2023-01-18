@@ -2,6 +2,7 @@ import { useContext, useState } from 'react'
 import { Navbar, NavbarBrand, Nav, NavItem, Input, NavLink } from 'reactstrap'
 import { useNavigate } from 'react-router-dom'
 import { AuthContext } from '../../context/Context'
+import Login from '../Login/Login'
 import './SiteNav.css'
 
 
@@ -40,10 +41,13 @@ export default function SiteNav() {
     }
 
     function login() {
-        if (currentPage !== '/login') {
-            navigate('/login')
-            window.location.reload()
-        }
+        return (
+            <Login />
+        )
+    }
+
+    function logout() {
+
     }
 
     return (
@@ -57,7 +61,9 @@ export default function SiteNav() {
                                 <NavLink onClick={login} style={{ color: "rgb(209, 209, 209)" }}>Login</NavLink>
                             </NavItem>
                         ) : (
-                            <></>
+                            <NavItem>
+                                <NavLink onClick={logout} style={{ color: "rgb(209, 209, 209)" }}>Logout</NavLink>
+                            </NavItem>
                         )}
                     </NavItem>
                     <NavItem>

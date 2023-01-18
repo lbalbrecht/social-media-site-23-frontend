@@ -22,7 +22,6 @@ function App() {
               <Routes>
                 <Route path='/' element={<Dashboard />} />
                 <Route path='/:username' element={<Profile username="" />} />
-                <Route path='/login' element={<Login />}/>
               </Routes>
             </div>
             <div className="appSidebar">
