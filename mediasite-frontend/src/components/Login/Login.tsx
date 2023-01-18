@@ -1,17 +1,21 @@
 import { useState } from 'react'
-import { Modal, InputGroup, InputGroupText, Input, Button } from 'reactstrap'
+import { Modal, InputGroup, Input, Button } from 'reactstrap'
 import SITE_API from '../../utils/ApiConfig'
+import './Login.css'
 
+interface modalProps {
+    showModal: boolean
+}
 
-export default function Login() {
+export default function Login({ showModal }: modalProps) {
     const [toggleLogin, setToggleLogin] = useState(true)
 
     function login() {
-
+        window.location.reload()
     }
 
     function signup() {
-
+        window.location.reload()
     }
 
     function changeView() {
@@ -19,57 +23,58 @@ export default function Login() {
     }
 
     return (
-        <Modal>
-            {toggleLogin ? (
-                <div>
-                    <h3>Login</h3>
-                    <br />
-                    <InputGroup>
-                        <InputGroupText>
-                            Username
-                        </InputGroupText>
-                        <Input placeholder="username" />
-                    </InputGroup>
-                    <br />
-                    <InputGroup>
-                        <InputGroupText>
-                            Password
-                        </InputGroupText>
-                        <Input placeholder="username" />
-                    </InputGroup>
-                    <br />
-                    <Button onClick={login}>Login</Button>
-                    <br />
-                    Don't have an account?
-                    <br />
-                    <Button onClick={changeView}>Signup</Button>
-                </div>
-            ) : (
-                <div>
-                    <h3>Signup</h3>
-                    <br />
-                    <InputGroup>
+        <Modal isOpen={showModal} className="loginModal" fade={true}>
+            <div className="inputGroup">
+                {toggleLogin ? (
+                    <div className="loginGroup">
+                        <h3>Login</h3>
+                        <br />
+                        <InputGroup>
+                            <Input placeholder="username" />
+                        </InputGroup>
+                        <br />
+                        <InputGroup>
+                            <Input placeholder="password" />
+                        </InputGroup>
+                        <br />
+                        <div className="modalButtons">
+                            <Button onClick={login} className="topBtn">Login</Button>
+                            <p className="changeText">Don't have an account?</p>
+                            <Button onClick={changeView} className="btmBtn">Signup</Button>
+                        </div>
+                    </div>
+                ) : (
+                    <div className="loginGroup">
+                        <h3>Signup</h3>
+                        <br />
                         Enter a username
-                        <Input placeholder="username" />
-                    </InputGroup>
-                    <br />
-                    <InputGroup>
+                        <br />
+                        <InputGroup>
+                            <Input placeholder="username" />
+                        </InputGroup>
+                        <br />
                         Enter a password
-                        <Input placeholder="password" />
-                    </InputGroup>
-                    <br />
-                    <InputGroup>
+                        <br />
+                        <InputGroup>
+                            <Input placeholder="password" />
+                        </InputGroup>
+                        <br />
                         Confirm your password
-                        <Input placeholder="confirm password" />
-                    </InputGroup>
-                    <br />
-                    <Button onClick={signup}>Signup</Button>
-                    <br />
-                    Already have an account?
-                    <br />
-                    <Button onClick={changeView}>Login</Button>
-                </div>
-            )}
+                        <br />
+                        <InputGroup>
+                            <Input placeholder="confirm password" />
+                        </InputGroup>
+                        <br />
+                        <div className="modalButtons">
+                            <Button onClick={signup} className="topBtn">Signup</Button>
+                            <br />
+                            <p className="changeText">Already have an account?</p>
+                            <br />
+                            <Button onClick={changeView} className="btmBtn">Login</Button>
+                        </div>
+                    </div>
+                )}
+            </div>
         </Modal>
     )
 }

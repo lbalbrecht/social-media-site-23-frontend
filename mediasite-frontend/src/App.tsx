@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter, Routes, Route, useParams } from 'react-router-dom'
 import './css/App.css';
 import { AuthProvider } from './context/Context'
@@ -9,15 +9,19 @@ import SiteNav from "./components/SiteNav/SiteNav"
 import Login from './components/Login/Login';
 
 function App() {
+  const [showLogin, setShowLogin] = useState(false);
 
   return (
     <div className="App">
       <AuthProvider>
         <BrowserRouter basename='/name_pending'>
           <div className="appNav">
-            <SiteNav />
+            <SiteNav passedFunc={()=>setShowLogin(!showLogin)}/>
           </div>
           <div className="appContent">
+            <div className="appLogin">
+              <Login showModal={showLogin}/>
+            </div>
             <div className="appBody">
               <Routes>
                 <Route path='/' element={<Dashboard />} />

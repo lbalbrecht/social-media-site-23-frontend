@@ -1,0 +1,13 @@
+h3 {
+    text-align: center;
+}
+
+.inputGroup {
+    padding: 10px;
+}
+
+.modalButtons {
+    /* display: flex; */
+    justify-content: center;
+    text-align: center;
+}

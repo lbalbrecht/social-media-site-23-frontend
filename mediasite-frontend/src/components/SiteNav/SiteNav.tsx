@@ -5,8 +5,11 @@ import { AuthContext } from '../../context/Context'
 import Login from '../Login/Login'
 import './SiteNav.css'
 
+interface navProps {
+    passedFunc: ()=> void
+}
 
-export default function SiteNav() {
+export default function SiteNav({passedFunc}: navProps) {
     const token = useContext(AuthContext)
     const currentPage = window.location.pathname
     const navigate = useNavigate();
@@ -40,14 +43,8 @@ export default function SiteNav() {
         }
     }
 
-    function login() {
-        return (
-            <Login />
-        )
-    }
-
     function logout() {
-
+        console.log("Logged out")
     }
 
     return (
@@ -58,7 +55,7 @@ export default function SiteNav() {
                     <NavItem>
                         {loginDisplay ? (
                             <NavItem>
-                                <NavLink onClick={login} style={{ color: "rgb(209, 209, 209)" }}>Login</NavLink>
+                                <NavLink onClick={() => passedFunc()} style={{ color: "rgb(209, 209, 209)" }}>Login</NavLink>
                             </NavItem>
                         ) : (
                             <NavItem>
